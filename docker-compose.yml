@@ -1,0 +1,17 @@
+version: "3.9"
+
+volumes:
+  data:
+
+services:
+  mumble-server:
+    image: mumblevoip/mumble-server:latest
+    container_name: troftu-mumble-server
+    hostname: troftu-mumble-server
+    volumes:
+      - data:/data/
+    ports:
+      - 64738:64738
+      - 64738:64738/udp
+    restart: unless-stopped
+    env_file: mumble-server.env
